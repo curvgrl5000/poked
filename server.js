@@ -15,7 +15,7 @@ app.use(function validateBearerToken(req, res, next) { // 'use' is univerally or
 	const apiToken = process.env.API_TOKEN;
 	const authToken = req.get('Authorization');
 	if( !authToken || authToken.split(' ')[1] !== apiToken){
-		return res.status(401).json({ error: 'Unauthorized request' })
+		return res.status(401).json({ error: 'Unauthorized request test' })
 	}
 	// move to the next middleware with next call:
 	next();
