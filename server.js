@@ -11,15 +11,15 @@ app.use(morgan('morganSetting')); // 'use' is universally setting up the app to 
 app.use(cors()); // for cross origin pre-flight request from a different port
 app.use(helmet());
 
-app.use(function validateBearerToken(req, res, next) { // 'use' is univerally or globally setting up the middleware to be used with each RESTFUL action
-	const apiToken = process.env.API_TOKEN;
-	const authToken = req.get('Authorization');
-	if( !authToken || authToken.split(' ')[1] !== apiToken){
-		return res.status(401).json({ error: 'Unauthorized request test' })
-	}
-	// move to the next middleware with next call:
-	next();
-});
+// app.use(function validateBearerToken(req, res, next) { // 'use' is univerally or globally setting up the middleware to be used with each RESTFUL action
+// 	const apiToken = process.env.API_TOKEN;
+// 	const authToken = req.get('Authorization');
+// 	if( !authToken || authToken.split(' ')[1] !== apiToken){
+// 		return res.status(401).json({ error: 'Unauthorized request test' })
+// 	}
+// 	// move to the next middleware with next call:
+// 	next();
+// });
 
 
 const validTypes = [`Bug`, `Dark`, `Dragon`, `Electric`, `Fairy`, `Fighting`, `Fire`, `Flying`, `Ghost`, `Grass`, `Ground`, `Ice`, `Normal`, `Poison`, `Psychic`, `Rock`, `Steel`, `Water`];
