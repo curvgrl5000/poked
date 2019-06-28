@@ -5,7 +5,7 @@ const helmet = require('helmet'); // hides info! https://github.com/helmetjs/hel
 const cors = require('cors');
 const POKEDEX = require('./pokedex.json');
 const app = express();
-const morganSetting = process.env.NODE_ENV === 'production' 'tiny' : 'common';
+const morganSetting = process.env.NODE_ENV === 'production'? 'tiny' : 'common';
 
 app.use(morgan('morganSetting')); // 'use' is universally setting up the app to use morgan calling the 'dev' argument
 app.use(cors()); // for cross origin pre-flight request from a different port
