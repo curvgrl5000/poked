@@ -1,27 +1,15 @@
-require('dotenv').config(); // the .config method reads the .env file each time you start the server 
+require('dotenv').config(); 
 const express = require('express');
 const morgan = require('morgan');
-const helmet = require('helmet'); // hides info! https://github.com/helmetjs/helmet#how-it-works
+const helmet = require('helmet'); 
 const cors = require('cors');
 const POKEDEX = require('./pokedex.json');
 const app = express();
 const morganSetting = process.env.NODE_ENV === 'production'? 'tiny' : 'common';
 
-app.use(morgan(morganSetting)); // 'use' is universally setting up the app to use morgan calling the 'dev' argument
-app.use(cors()); // for cross origin pre-flight request from a different port
+app.use(morgan(morganSetting)); 
+app.use(cors()); 
 app.use(helmet());
-
-// for development
-// app.use(function validateBearerToken(req, res, next) { // 'use' is univerally or globally setting up the middleware to be used with each RESTFUL action
-// 	const apiToken = process.env.API_TOKEN;
-// 	const authToken = req.get('Authorization');
-// 	if( !authToken || authToken.split(' ')[1] !== apiToken){
-// 		return res.status(401).json({ error: 'Unauthorized request test' })
-// 	}
-// 	// move to the next middleware with next call:
-// 	next();
-// });
-
 
 const validTypes = [`Bug`, `Dark`, `Dragon`, `Electric`, `Fairy`, `Fighting`, `Fire`, `Flying`, `Ghost`, `Grass`, `Ground`, `Ice`, `Normal`, `Poison`, `Psychic`, `Rock`, `Steel`, `Water`];
 
@@ -42,7 +30,7 @@ function handleGetPokemon(req, res) {
     )
 	}
 
-	if(type) { // if there IS a key type
+	if(type) {s
     response = response.filter(pokemon => 
     	pokemon.type.includes( type )
     )
