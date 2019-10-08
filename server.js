@@ -7,10 +7,11 @@ const POKEDEX = require('./pokedex.json');
 const app = express();
 const morganSetting = process.env.NODE_ENV === 'production'? 'tiny' : 'common';
 
-app.use(morgan('morganSetting')); // 'use' is universally setting up the app to use morgan calling the 'dev' argument
+app.use(morgan(morganSetting)); // 'use' is universally setting up the app to use morgan calling the 'dev' argument
 app.use(cors()); // for cross origin pre-flight request from a different port
 app.use(helmet());
 
+// for development
 // app.use(function validateBearerToken(req, res, next) { // 'use' is univerally or globally setting up the middleware to be used with each RESTFUL action
 // 	const apiToken = process.env.API_TOKEN;
 // 	const authToken = req.get('Authorization');
